@@ -7,5 +7,6 @@
 
 import Foundation
 
-print("Hello, World!")
-
+// Run the function to display CPU information
+printCPUInfo()
+getGPUInfo()
