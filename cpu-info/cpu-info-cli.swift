@@ -6,7 +6,28 @@
 //
 
 import Foundation
+import ArgumentParser
 
-// Run the function to display CPU information
-printCPUInfo()
-getGPUInfo()
+@main
+struct InfoParser: ParsableCommand {
+   
+    @Flag(name: .shortAndLong, help: "get cpu information")
+    var cpu: Bool = false
+    
+    @Flag(name: .shortAndLong, help: "get gpu information")
+    var gpu: Bool = false
+    
+    func run() {
+        if cpu {
+            getCPUInfo()
+        }
+        if gpu {
+            getGPUInfo()
+        }
+        if !cpu && !gpu {
+            getCPUInfo()
+            print(String(repeating: "-", count: 30))
+            getGPUInfo()
+        }
+    }
+}
